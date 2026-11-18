@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DDBB75"/>
+      <stop offset="50%" stop-color="#C49A50"/>
+      <stop offset="100%" stop-color="#A8782D"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="#20231F"/>
+  <!-- Central lotus spire and architectural columns -->
+  <g transform="translate(15, 12) scale(0.7)">
+    <!-- Outer Lotus Crown Petal -->
+    <path d="M50 5 C58 22 75 35 75 52 C75 70 60 80 50 82 C40 80 25 70 25 52 C25 35 42 22 50 5 Z" stroke="url(#goldGradient)" stroke-width="4.5" fill="none"/>
+    <!-- Left Wing Petal -->
+    <path d="M22 62 C10 52 5 36 20 28 C35 22 42 38 46 56 C37 60 28 62 22 62 Z" stroke="url(#goldGradient)" stroke-width="4.5" fill="none"/>
+    <!-- Right Wing Petal -->
+    <path d="M78 62 C90 52 95 36 80 28 C65 22 58 38 54 56 C63 60 72 62 78 62 Z" stroke="url(#goldGradient)" stroke-width="4.5" fill="none"/>
+    <!-- Central architectural pillars -->
+    <rect x="47" y="24" width="6" height="50" rx="3" fill="url(#goldGradient)"/>
+    <rect x="40" y="36" width="4.5" height="38" rx="2.2" fill="url(#goldGradient)"/>
+    <rect x="55.5" y="36" width="4.5" height="38" rx="2.2" fill="url(#goldGradient)"/>
+  </g>
+</svg>
