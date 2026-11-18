@@ -99,11 +99,13 @@ export const HOTEL_CONFIG = {
       name: "DELUXE ROOM",
       shortDescription: "A serene, thoughtfully appointed sanctuary designed for restful stays and discerning travelers seeking comfort near the airport.",
       fullDescription: "The Deluxe Room at Ayora Suites is tailored for both business executives and leisure guests who appreciate tranquil ambiance and refined comfort. Complete with premium bedding, ergonomic workspace, and modern ensuite bathroom.",
-      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
+      image: "/images/hotel/rooms/deluxe/deluxe-main.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
+        "/images/hotel/rooms/deluxe/deluxe-main.jpg",
+        "/images/hotel/rooms/deluxe/deluxe-bed.jpg",
+        "/images/hotel/rooms/deluxe/deluxe-workdesk.jpg",
+        "/images/hotel/rooms/deluxe/deluxe-angle.jpg",
+        "/images/hotel/rooms/deluxe/deluxe-washroom.jpg"
       ],
       features: [
         "Thoughtfully furnished bedroom interior",
@@ -119,11 +121,13 @@ export const HOTEL_CONFIG = {
       name: "TWIN SHARING ROOM",
       shortDescription: "Spacious dual accommodation featuring two comfortable beds, ideal for corporate colleagues, friends, or traveling duos.",
       fullDescription: "The Twin Sharing Room provides generous floor space configured with two independent twin beds, offering complete privacy and comfort for co-workers or traveling companions attending conferences or airport transit.",
-      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
+      image: "/images/hotel/rooms/twin/twin-main.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80"
+        "/images/hotel/rooms/twin/twin-main.jpg",
+        "/images/hotel/rooms/twin/twin-beds.jpg",
+        "/images/hotel/rooms/twin/twin-view.jpg",
+        "/images/hotel/rooms/twin/twin-desk.jpg",
+        "/images/hotel/rooms/twin/twin-washroom.jpg"
       ],
       features: [
         "Twin single bed configuration",
@@ -139,11 +143,13 @@ export const HOTEL_CONFIG = {
       name: "EXECUTIVE ROOM",
       shortDescription: "An elevated stay experience featuring enhanced comfort, refined furnishings, and ample workspace tailored for business leaders.",
       fullDescription: "Designed for travelers who demand extra space and refined design, the Executive Room features an expansive layout, plush seating area, and dedicated work console for effortless productivity before or after flights.",
-      image: "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1200&q=80",
+      image: "/images/hotel/rooms/executive/executive-main.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80"
+        "/images/hotel/rooms/executive/executive-main.jpg",
+        "/images/hotel/rooms/executive/executive-bed.jpg",
+        "/images/hotel/rooms/executive/executive-desk.jpg",
+        "/images/hotel/rooms/executive/executive-seating.jpg",
+        "/images/hotel/rooms/executive/executive-washroom.jpg"
       ],
       features: [
         "Premium bedding and contemporary decor",
@@ -159,11 +165,14 @@ export const HOTEL_CONFIG = {
       name: "SUITE ROOM",
       shortDescription: "Our signature luxury accommodation combining an opulent private bedroom with an expansive living and hosting lounge.",
       fullDescription: "The Suite Room represents the pinnacle of hospitality at Ayora Suites. Boasting a separate living lounge, master bedroom retreat, and deluxe bath appointments, it delivers an unforgettable boutique luxury experience.",
-      image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
+      image: "/images/hotel/rooms/suite/suite-main.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
+        "/images/hotel/rooms/suite/suite-main.jpg",
+        "/images/hotel/rooms/suite/suite-living.jpg",
+        "/images/hotel/rooms/suite/suite-lounge.jpg",
+        "/images/hotel/rooms/suite/suite-bedroom.jpg",
+        "/images/hotel/rooms/suite/suite-view.jpg",
+        "/images/hotel/rooms/suite/suite-washroom.jpg"
       ],
       features: [
         "Separate living lounge and private master suite",
@@ -237,57 +246,75 @@ export const HOTEL_CONFIG = {
   gallery: [
     {
       id: "g-1",
-      title: "Boutique Suite Interior",
-      category: "Rooms",
-      imageUrl: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80"
+      title: "Ayora Suites Architectural Facade",
+      category: "Property",
+      imageUrl: "/images/hotel/exterior/exterior-front.jpg"
     },
     {
       id: "g-2",
-      title: "Executive Conference Hall",
+      title: "Executive Conference & Boardroom",
       category: "Meetings & Events",
-      imageUrl: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/conference/conference-main.jpg"
     },
     {
       id: "g-3",
-      title: "Warm Ivory Reception Lounge",
+      title: "Welcoming Reception Lobby & Foyer",
       category: "Property",
-      imageUrl: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/reception/reception-lobby.jpg"
     },
     {
       id: "g-4",
-      title: "Luxury Suite Living Area",
+      title: "Signature Suite Living & Lounge Area",
       category: "Rooms",
-      imageUrl: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/rooms/suite/suite-living.jpg"
     },
     {
       id: "g-5",
-      title: "Architectural Symmetry & Lighting",
+      title: "Boutique Reception Desk & Guest Welcome",
       category: "Interiors",
-      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/reception/reception-main.jpg"
     },
     {
       id: "g-6",
-      title: "Corporate Meeting Room Setup",
+      title: "Corporate Meeting & Audio-Visual Hall",
       category: "Meetings & Events",
-      imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/conference/conference-presentation.jpg"
     },
     {
       id: "g-7",
-      title: "Twin Sharing Accommodation",
+      title: "Twin Sharing Room Accommodation",
       category: "Rooms",
-      imageUrl: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/rooms/twin/twin-beds.jpg"
     },
     {
       id: "g-8",
-      title: "Contemporary Dining & Cafe",
+      title: "Ayora Suites Dining & Restaurant",
       category: "Interiors",
-      imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/dining/dining-main.jpg"
     },
     {
       id: "g-9",
-      title: "Kempegowda Airport Corridor",
+      title: "Evening Illumination & Architectural Night View",
+      category: "Property",
+      imageUrl: "/images/hotel/exterior/exterior-night.jpg"
+    },
+    {
+      id: "g-10",
+      title: "Executive King Room Sanctuary",
+      category: "Rooms",
+      imageUrl: "/images/hotel/rooms/executive/executive-main.jpg"
+    },
+    {
+      id: "g-11",
+      title: "Gourmet Buffet & Dining Counter",
+      category: "Interiors",
+      imageUrl: "/images/hotel/dining/dining-buffet.jpg"
+    },
+    {
+      id: "g-12",
+      title: "Airport Corridor Landmark Exterior",
       category: "Surroundings",
-      imageUrl: "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80"
+      imageUrl: "/images/hotel/exterior/exterior-facade.jpg"
     }
   ] as GalleryItem[],
 

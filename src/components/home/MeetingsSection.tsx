@@ -91,7 +91,7 @@ export const MeetingsSection: React.FC<MeetingsSectionProps> = ({ onOpenMeetingM
               
               <div className="relative rounded-sm overflow-hidden shadow-2xl border border-white/15 aspect-[4/3] bg-ayora-charcoal">
                 <img
-                  src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=80"
+                  src="/images/hotel/conference/conference-main.jpg"
                   alt="Ayora Suites Conference & Meeting Space"
                   className="w-full h-full object-cover filter brightness-95"
                   loading="lazy"

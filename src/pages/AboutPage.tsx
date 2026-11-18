@@ -67,8 +67,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
           <div className="lg:col-span-6 relative">
             <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-luxury-lg border border-ayora-border bg-ayora-beige">
               <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
-                alt="Ayora Suites Interior Ambience"
+                src="/images/hotel/reception/reception-lobby.jpg"
+                alt="Ayora Suites Reception & Guest Foyer"
                 className="w-full h-full object-cover"
               />
             </div>

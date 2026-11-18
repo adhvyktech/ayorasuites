@@ -65,8 +65,8 @@ export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }
           <div className="lg:col-span-6 relative">
             <div className="aspect-[4/3] rounded-sm overflow-hidden shadow-luxury-lg border border-ayora-border bg-ayora-beige">
               <img
-                src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=80"
-                alt="Ayora Suites Conference Space"
+                src="/images/hotel/conference/conference-main.jpg"
+                alt="Ayora Suites Conference & Boardroom Facility"
                 className="w-full h-full object-cover"
               />
             </div>

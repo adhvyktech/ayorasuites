@@ -22,8 +22,8 @@ export const Welcome: React.FC = () => {
               {/* Main Image */}
               <div className="relative rounded-sm overflow-hidden shadow-luxury-lg z-10 aspect-[4/3] bg-ayora-beige">
                 <img
-                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
-                  alt="Ayora Suites Hospitality Atmosphere"
+                  src="/images/hotel/exterior/exterior-front.jpg"
+                  alt="Ayora Suites Grand Entrance and Facade"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />

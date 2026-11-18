@@ -13,9 +13,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       {/* Background Photography with Warm Luxury Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=85"
-          alt="Ayora Suites Luxury Boutique Hospitality"
-          className="w-full h-full object-cover object-center filter brightness-[0.88]"
+          src="/images/hotel/exterior/exterior-night.jpg"
+          alt="Ayora Suites Luxury Boutique Hospitality Building"
+          className="w-full h-full object-cover object-center filter brightness-[0.85]"
           loading="eager"
         />
         {/* Editorial Gradients for Readability and Mood */}
