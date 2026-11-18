@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Mail, Phone, MessageSquare, AlertCircle, CheckCircle2, Send } from 'lucide-react';
 import { HOTEL_CONFIG } from '../../data/hotelConfig';
+import { submitToWeb3Forms } from '../../services/web3forms';
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export const ContactForm: React.FC = () => {
   const [submittedState, setSubmittedState] = useState<null | {
     whatsappUrl: string;
     summary: string;
+    isEmailSent: boolean;
+    statusMessage: string;
   }>(null);
 
   const validate = () => {
@@ -45,22 +48,35 @@ export const ContactForm: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
 
-      const msg = `Hello Ayora Suites, my name is ${formData.name} (${formData.email}, ${formData.phone}). Subject: ${formData.subject}. Message: ${formData.message}`;
-      const waUrl = `https://wa.me/${HOTEL_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    const msg = `Hello Ayora Suites, my name is ${formData.name} (${formData.email}, ${formData.phone}). Subject: ${formData.subject}. Message: ${formData.message}`;
+    const waUrl = `https://wa.me/${HOTEL_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(msg)}`;
 
-      setSubmittedState({
-        whatsappUrl: waUrl,
-        summary: `${formData.subject} from ${formData.name}`
-      });
-    }, 600);
+    const web3Result = await submitToWeb3Forms(
+      {
+        enquiry_type: 'General Contact',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message
+      },
+      `Ayora Suites – Contact: ${formData.subject} from ${formData.name}`
+    );
+
+    setIsSubmitting(false);
+
+    setSubmittedState({
+      whatsappUrl: waUrl,
+      summary: `${formData.subject} from ${formData.name}`,
+      isEmailSent: web3Result.success,
+      statusMessage: web3Result.message
+    });
   };
 
   return (
@@ -73,24 +89,34 @@ export const ContactForm: React.FC = () => {
 
           <div>
             <h4 className="text-xl font-serif text-ayora-charcoal">
-              Message Prepared
+              Message {submittedState.isEmailSent ? 'Sent Successfully' : 'Prepared'}
             </h4>
             <p className="text-xs text-ayora-muted mt-2 max-w-sm mx-auto">
-              Your inquiry regarding <strong className="text-ayora-charcoal">{submittedState.summary}</strong> is structured and ready to deliver.
+              Your inquiry regarding <strong className="text-ayora-charcoal">{submittedState.summary}</strong> has been processed.
             </p>
           </div>
 
-          <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
-            <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <p className="font-semibold text-amber-800">
-                Direct Email Dispatch Notice
-              </p>
-              <p className="text-[11px] leading-relaxed text-amber-700">
-                Direct automatic forwarding to <strong>{HOTEL_CONFIG.contact.primaryEmail}</strong> requires backend SMTP integration. For instant response from the front desk, tap below to chat on WhatsApp.
-              </p>
+          {submittedState.isEmailSent ? (
+            <div className="bg-emerald-50 border border-emerald-200 rounded p-3.5 text-left text-xs text-emerald-900 flex items-start space-x-2.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-emerald-800">Email Dispatched Successfully</p>
+                <p className="text-[11px] text-emerald-700 mt-0.5">{submittedState.statusMessage}</p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
+              <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <p className="font-semibold text-amber-800">
+                  Web3Forms Dispatch Notice
+                </p>
+                <p className="text-[11px] leading-relaxed text-amber-700">
+                  Web3Forms key is awaiting entry. To reach the front desk immediately, tap below to chat on WhatsApp.
+                </p>
+              </div>
+            </div>
+          )}
 
           <div className="pt-2 space-y-3">
             <a

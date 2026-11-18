@@ -1,6 +1,7 @@
 import React from 'react';
 import { HOTEL_CONFIG, type RoomData } from '../data/hotelConfig';
 import { Calendar, Eye, Sparkles, ShieldCheck } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 interface RoomsPageProps {
   onSelectRoom: (room: RoomData) => void;
@@ -11,8 +12,40 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
   onSelectRoom,
   onEnquireRoom
 }) => {
+  const roomsSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Ayora Suites Room Categories",
+    "itemListElement": HOTEL_CONFIG.rooms.map((room, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "item": {
+        "@type": "HotelRoom",
+        "name": room.name,
+        "description": room.shortDescription,
+        "image": room.image,
+        "url": `https://ayorasuites.com/rooms/${room.slug}`
+      }
+    }))
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="Rooms & Suites | Ayora Suites – Boutique Stays Near Bengaluru Airport"
+        description="Choose from Deluxe Rooms, Twin Sharing Rooms, Executive Rooms, and Luxury Suites at Ayora Suites. Thoughtfully appointed comfort near Kempegowda International Airport."
+        keywords={[
+          "Ayora Suites rooms",
+          "deluxe hotel room Bangalore airport",
+          "twin sharing hotel Chikkajala",
+          "executive suites airport road Bengaluru",
+          "luxury rooms near Kempegowda airport",
+          "transit stay rooms BLR",
+          "business hotel suites Devanahalli"
+        ]}
+        canonicalPath="/rooms"
+        schema={roomsSchema}
+      />
       
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">

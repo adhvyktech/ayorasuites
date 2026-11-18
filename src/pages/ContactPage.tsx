@@ -2,10 +2,46 @@ import React from 'react';
 import { HOTEL_CONFIG } from '../data/hotelConfig';
 import { ContactForm } from '../components/forms/ContactForm';
 import { MapPin, Phone, Mail, MessageSquare, ExternalLink } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 export const ContactPage: React.FC = () => {
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Ayora Suites",
+    "url": "https://ayorasuites.com/contact",
+    "mainEntity": {
+      "@type": "Hotel",
+      "name": "Ayora Suites",
+      "telephone": "+919980028502",
+      "email": "ayorasuites@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Building No: 1997/1289/9/32, New International Airport Road, Near Decathlon, Chikkajala, Kadigenahalli Gate",
+        "addressLocality": "Bengaluru Urban",
+        "addressRegion": "Karnataka",
+        "postalCode": "562157",
+        "addressCountry": "IN"
+      }
+    }
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="Contact & Reservations | Ayora Suites Bengaluru Airport Road"
+        description="Connect with Ayora Suites for instant reservations, corporate bookings, or transit support. Call +91 99800 28502, chat on WhatsApp, or email ayorasuites@gmail.com."
+        keywords={[
+          "Ayora Suites contact number",
+          "Ayora Suites phone",
+          "hotel booking Bangalore airport",
+          "Ayora Suites email",
+          "WhatsApp hotel reservation Bangalore airport",
+          "hotel reservations Chikkajala"
+        ]}
+        canonicalPath="/contact"
+        schema={contactSchema}
+      />
       
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">

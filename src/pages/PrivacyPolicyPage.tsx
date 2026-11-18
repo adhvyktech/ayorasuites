@@ -1,10 +1,17 @@
 import React from 'react';
 import { HOTEL_CONFIG } from '../data/hotelConfig';
 import { ShieldCheck } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="Privacy Policy | Ayora Suites Bengaluru"
+        description="Privacy policy and data protection terms for Ayora Suites guests and online website visitors."
+        keywords={["Ayora Suites privacy policy", "hotel privacy policy Bangalore"]}
+        canonicalPath="/privacy-policy"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         <div className="border-b border-ayora-border pb-6 mb-8">

@@ -57,6 +57,7 @@ export const HOTEL_CONFIG = {
     secondaryPhoneClean: "+919148703006",
     whatsappNumber: "919980028502",
     whatsappUrl: "https://wa.me/919980028502",
+    web3formsAccessKey: "", // User will provide Web3Forms API key
     address: {
       building: "Building No: 1997/1289/9/32",
       street: "New International Airport Road",

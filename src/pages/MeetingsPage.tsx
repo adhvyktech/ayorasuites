@@ -1,13 +1,45 @@
 import React from 'react';
 import { Calendar, Check } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 interface MeetingsPageProps {
   onOpenMeetingModal: () => void;
 }
 
 export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }) => {
+  const meetingSchema = {
+    "@context": "https://schema.org",
+    "@type": "EventVenue",
+    "name": "Ayora Suites Conference & Meeting Facilities",
+    "description": "Executive corporate meeting spaces, boardroom seminars, and corporate group accommodation on New International Airport Road near Kempegowda International Airport.",
+    "url": "https://ayorasuites.com/meetings-events",
+    "telephone": "+919980028502",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Building No: 1997/1289/9/32, New International Airport Road, Near Decathlon, Chikkajala, Kadigenahalli Gate",
+      "addressLocality": "Bengaluru Urban",
+      "addressRegion": "Karnataka",
+      "postalCode": "562157",
+      "addressCountry": "IN"
+    }
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="Meetings & Events | Ayora Suites – Corporate Conference Venue Bangalore Airport"
+        description="Host executive board meetings, corporate conferences, and company seminars at Ayora Suites on New International Airport Road near Decathlon Chikkajala, Bengaluru."
+        keywords={[
+          "conference hall near Bangalore Airport",
+          "meeting rooms Chikkajala",
+          "corporate event venue airport road Bengaluru",
+          "business meeting hotel BLR",
+          "corporate accommodation packages North Bangalore",
+          "seminar venue Devanahalli"
+        ]}
+        canonicalPath="/meetings-events"
+        schema={meetingSchema}
+      />
       
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">

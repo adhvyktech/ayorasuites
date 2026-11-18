@@ -1,13 +1,47 @@
 import React from 'react';
 import { ShieldCheck, HeartHandshake, Sparkles, MapPin, Calendar } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 interface AboutPageProps {
   onOpenBooking: () => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Ayora Suites",
+    "url": "https://ayorasuites.com/about",
+    "description": "Discover the boutique hospitality philosophy of Ayora Suites, offering serene, comfortable accommodation near Kempegowda International Airport Road in Bengaluru.",
+    "mainEntity": {
+      "@type": "Hotel",
+      "name": "Ayora Suites",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Building No: 1997/1289/9/32, New International Airport Road, Near Decathlon, Chikkajala, Kadigenahalli Gate",
+        "addressLocality": "Bengaluru Urban",
+        "addressRegion": "Karnataka",
+        "postalCode": "562157",
+        "addressCountry": "IN"
+      }
+    }
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="About Us | Ayora Suites – Boutique Hospitality Near Bengaluru Airport"
+        description="Learn about Ayora Suites, our boutique hospitality philosophy, and our dedication to providing refined, peaceful stays along Bengaluru's New International Airport Road."
+        keywords={[
+          "About Ayora Suites",
+          "boutique hotel story Bangalore",
+          "hospitality near Kempegowda Airport",
+          "hotels in Chikkajala",
+          "luxury boutique stay Bengaluru Airport Road"
+        ]}
+        canonicalPath="/about"
+        schema={aboutSchema}
+      />
       
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">

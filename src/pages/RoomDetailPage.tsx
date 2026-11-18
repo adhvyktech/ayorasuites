@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { HOTEL_CONFIG, generateWhatsAppBookingLink } from '../data/hotelConfig';
 import { Calendar, MessageSquare, ArrowLeft, Sparkles, Check, ShieldCheck } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 interface RoomDetailPageProps {
   onOpenBooking: (roomName?: string) => void;
@@ -13,8 +14,49 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
   const room = HOTEL_CONFIG.rooms.find((r) => r.slug === slug) || HOTEL_CONFIG.rooms[0];
   const [selectedImage, setSelectedImage] = useState<string>(room.image);
 
+  const roomSchema = {
+    "@context": "https://schema.org",
+    "@type": "HotelRoom",
+    "name": `${room.name} – Ayora Suites`,
+    "description": room.fullDescription,
+    "image": room.image,
+    "url": `https://ayorasuites.com/rooms/${room.slug}`,
+    "amenityFeature": room.features.map((f) => ({
+      "@type": "LocationFeatureSpecification",
+      "name": f,
+      "value": true
+    })),
+    "containedInPlace": {
+      "@type": "Hotel",
+      "name": "Ayora Suites",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Building No: 1997/1289/9/32, New International Airport Road, Near Decathlon, Chikkajala, Kadigenahalli Gate",
+        "addressLocality": "Bengaluru Urban",
+        "addressRegion": "Karnataka",
+        "postalCode": "562157",
+        "addressCountry": "IN"
+      }
+    }
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title={`${room.name} | Ayora Suites – Boutique Stay Near Bengaluru Airport`}
+        description={`${room.shortDescription} Located near Kempegowda International Airport on New Airport Road, Chikkajala.`}
+        keywords={[
+          room.name,
+          `${room.name} Bangalore airport`,
+          "hotel room Chikkajala",
+          "stay near Decathlon Bangalore airport",
+          "transit stay Bangalore airport road",
+          "Ayora Suites accommodation"
+        ]}
+        canonicalPath={`/rooms/${room.slug}`}
+        ogImage={room.image}
+        schema={roomSchema}
+      />
       
       {/* Back button & Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -110,7 +152,7 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
                 </p>
                 <p className="flex items-center text-ayora-charcoal">
                   <Check className="w-3.5 h-3.5 text-ayora-gold mr-2 flex-shrink-0" />
-                  Near Kempegowda International Airport (BLR)
+                  Close to Kempegowda International Airport (BLR)
                 </p>
               </div>
 

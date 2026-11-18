@@ -1,10 +1,17 @@
 import React from 'react';
 import { HOTEL_CONFIG } from '../data/hotelConfig';
 import { FileText } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 export const TermsPage: React.FC = () => {
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
+      <SEO
+        title="Terms & Conditions | Ayora Suites Bengaluru"
+        description="Terms and conditions, reservation policies, check-in requirements and stay regulations at Ayora Suites."
+        keywords={["Ayora Suites terms", "hotel policies Bangalore airport"]}
+        canonicalPath="/terms"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         <div className="border-b border-ayora-border pb-6 mb-8">

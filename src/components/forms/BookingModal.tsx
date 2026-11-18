@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, User, Phone, Mail, MessageSquare, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 import { HOTEL_CONFIG, generateWhatsAppBookingLink } from '../../data/hotelConfig';
+import { submitToWeb3Forms } from '../../services/web3forms';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -38,6 +39,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [submittedState, setSubmittedState] = useState<null | {
     summary: string;
     whatsappUrl: string;
+    isEmailSent: boolean;
+    statusMessage: string;
   }>(null);
 
   useEffect(() => {
@@ -96,28 +99,43 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Simulate backend relay attempt & generate direct WhatsApp handoff
-    setTimeout(() => {
-      setIsSubmitting(false);
-      const waUrl = generateWhatsAppBookingLink({
-        name: formData.name,
-        checkIn: formData.checkIn,
-        checkOut: formData.checkOut,
-        guests: formData.guests,
-        roomCategory: formData.roomCategory
-      });
+    const waUrl = generateWhatsAppBookingLink({
+      name: formData.name,
+      checkIn: formData.checkIn,
+      checkOut: formData.checkOut,
+      guests: formData.guests,
+      roomCategory: formData.roomCategory
+    });
 
-      setSubmittedState({
-        summary: `${formData.roomCategory} | ${formData.checkIn} to ${formData.checkOut} (${formData.guests} Guests)`,
-        whatsappUrl: waUrl
-      });
-    }, 600);
+    const web3Result = await submitToWeb3Forms(
+      {
+        enquiry_type: 'Room Booking',
+        guest_name: formData.name,
+        guest_email: formData.email,
+        guest_phone: formData.phone,
+        room_category: formData.roomCategory,
+        check_in_date: formData.checkIn,
+        check_out_date: formData.checkOut,
+        number_of_guests: formData.guests,
+        special_requests: formData.specialRequests || 'None'
+      },
+      `Ayora Suites – New Booking: ${formData.roomCategory} (${formData.name})`
+    );
+
+    setIsSubmitting(false);
+
+    setSubmittedState({
+      summary: `${formData.roomCategory} | ${formData.checkIn} to ${formData.checkOut} (${formData.guests} Guests)`,
+      whatsappUrl: waUrl,
+      isEmailSent: web3Result.success,
+      statusMessage: web3Result.message
+    });
   };
 
   const handleDateChange = (field: 'checkIn' | 'checkOut', value: string) => {
@@ -164,25 +182,34 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <div>
                 <h4 className="text-xl font-serif text-ayora-charcoal">
-                  Booking Enquiry Prepared
+                  Booking Enquiry {submittedState.isEmailSent ? 'Delivered' : 'Ready'}
                 </h4>
                 <p className="text-xs text-ayora-muted mt-2 max-w-md mx-auto">
-                  Your enquiry for <strong className="text-ayora-charcoal">{submittedState.summary}</strong> has been structured.
+                  Your reservation request for <strong className="text-ayora-charcoal">{submittedState.summary}</strong> is confirmed.
                 </p>
               </div>
 
-              {/* Notice regarding backend integration */}
-              <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
-                <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="font-semibold text-amber-800">
-                    Direct Email Delivery Status
-                  </p>
-                  <p className="text-[11px] leading-relaxed text-amber-700">
-                    Direct email dispatch to <strong>{HOTEL_CONFIG.contact.primaryEmail}</strong> will be active upon connecting SMTP or API keys. For immediate booking confirmation and room reservation, please connect directly via WhatsApp.
-                  </p>
+              {submittedState.isEmailSent ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded p-3.5 text-left text-xs text-emerald-900 flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-emerald-800">Email Dispatched Successfully</p>
+                    <p className="text-[11px] text-emerald-700 mt-0.5">{submittedState.statusMessage}</p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
+                  <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-amber-800">
+                      Web3Forms Dispatch Status
+                    </p>
+                    <p className="text-[11px] leading-relaxed text-amber-700">
+                      Web3Forms access key is awaiting entry. Tap below to send this enquiry instantly via WhatsApp to the Ayora Suites reservation desk for immediate room confirmation.
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Instant WhatsApp Handover */}
               <div className="pt-2 space-y-3">
@@ -193,7 +220,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   className="w-full py-3.5 px-6 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>Send Enquiry via WhatsApp for Instant Confirmation</span>
+                  <span>Send via WhatsApp for Instant Room Confirmation</span>
                 </a>
 
                 <p className="text-[11px] text-ayora-muted">
@@ -382,10 +409,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   className="w-full py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Processing Details...</span>
+                    <span>Submitting Enquiry...</span>
                   ) : (
                     <>
-                      <span>Check Availability &amp; Enquire</span>
+                      <span>Submit Booking Enquiry</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, User, Building2, Mail, Phone, MessageSquare, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
 import { HOTEL_CONFIG, generateWhatsAppMeetingLink } from '../../data/hotelConfig';
+import { submitToWeb3Forms } from '../../services/web3forms';
 
 interface MeetingModalProps {
   isOpen: boolean;
@@ -24,6 +25,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ isOpen, onClose }) =
   const [submittedState, setSubmittedState] = useState<null | {
     whatsappUrl: string;
     summary: string;
+    isEmailSent: boolean;
+    statusMessage: string;
   }>(null);
 
   if (!isOpen) return null;
@@ -54,25 +57,43 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ isOpen, onClose }) =
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      const waUrl = generateWhatsAppMeetingLink({
-        name: formData.name,
-        company: formData.company,
-        date: formData.eventDate,
-        attendees: formData.attendees,
-        eventType: formData.eventType
-      });
-      setSubmittedState({
-        whatsappUrl: waUrl,
-        summary: `${formData.eventType} on ${formData.eventDate} for ${formData.attendees} attendees (${formData.company})`
-      });
-    }, 600);
+
+    const waUrl = generateWhatsAppMeetingLink({
+      name: formData.name,
+      company: formData.company,
+      date: formData.eventDate,
+      attendees: formData.attendees,
+      eventType: formData.eventType
+    });
+
+    const web3Result = await submitToWeb3Forms(
+      {
+        enquiry_type: 'Conference & Meeting',
+        contact_name: formData.name,
+        company_name: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        preferred_event_date: formData.eventDate,
+        expected_attendees: formData.attendees,
+        event_type: formData.eventType,
+        specific_requirements: formData.requirements || 'Standard corporate layout'
+      },
+      `Ayora Suites – Meeting Enquiry: ${formData.company} (${formData.eventType})`
+    );
+
+    setIsSubmitting(false);
+
+    setSubmittedState({
+      whatsappUrl: waUrl,
+      summary: `${formData.eventType} on ${formData.eventDate} for ${formData.attendees} attendees (${formData.company})`,
+      isEmailSent: web3Result.success,
+      statusMessage: web3Result.message
+    });
   };
 
   return (
@@ -108,24 +129,34 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ isOpen, onClose }) =
 
               <div>
                 <h4 className="text-xl font-serif text-ayora-charcoal">
-                  Event Enquiry Prepared
+                  Event Enquiry {submittedState.isEmailSent ? 'Delivered' : 'Ready'}
                 </h4>
                 <p className="text-xs text-ayora-muted mt-2 max-w-md mx-auto">
-                  Your event specifications for <strong className="text-ayora-charcoal">{submittedState.summary}</strong> are ready.
+                  Your event specifications for <strong className="text-ayora-charcoal">{submittedState.summary}</strong> are prepared.
                 </p>
               </div>
 
-              <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
-                <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="font-semibold text-amber-800">
-                    Direct Email Delivery Status
-                  </p>
-                  <p className="text-[11px] leading-relaxed text-amber-700">
-                    Direct email dispatch to <strong>{HOTEL_CONFIG.contact.primaryEmail}</strong> will be active upon configuring mail services. To discuss hall availability, seating layouts, and corporate rates right now, please connect directly via WhatsApp.
-                  </p>
+              {submittedState.isEmailSent ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded p-3.5 text-left text-xs text-emerald-900 flex items-start space-x-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-emerald-800">Email Dispatched Successfully</p>
+                    <p className="text-[11px] text-emerald-700 mt-0.5">{submittedState.statusMessage}</p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-amber-50/80 border border-amber-200/80 rounded p-3.5 text-left text-xs text-amber-900 flex items-start space-x-2.5">
+                  <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <p className="font-semibold text-amber-800">
+                      Web3Forms Dispatch Status
+                    </p>
+                    <p className="text-[11px] leading-relaxed text-amber-700">
+                      Web3Forms access key is awaiting entry. To discuss hall availability, seating layouts, and corporate rates right now, please connect directly via WhatsApp.
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <div className="pt-2 space-y-3">
                 <a
@@ -315,7 +346,7 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ isOpen, onClose }) =
                   className="w-full py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Processing Enquiry...</span>
+                    <span>Submitting Enquiry...</span>
                   ) : (
                     <>
                       <span>Submit Meeting Enquiry</span>

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home } from 'lucide-react';
+import { SEO } from '../components/common/SEO';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="min-h-[75vh] flex items-center justify-center pt-24 pb-16 bg-ayora-ivory px-4">
+      <SEO
+        title="Page Not Found (404) | Ayora Suites Bengaluru"
+        description="The hospitality page or resource you are looking for is unavailable."
+        canonicalPath="/404"
+      />
       <div className="max-w-md w-full bg-white p-8 sm:p-10 rounded-sm border border-ayora-border shadow-luxury text-center space-y-5">
         
         <span className="font-serif text-6xl text-ayora-gold font-normal block">
