@@ -29,14 +29,18 @@ export const submitToWeb3Forms = async (
   }
 
   try {
-    const payload = {
+    const replyEmail = (formData.email || formData.guest_email || '') as string;
+    const payload: Record<string, unknown> = {
       access_key: accessKey,
       subject: subject || 'New Enquiry from Ayora Suites Website',
       from_name: 'Ayora Suites Concierge Portal',
-      to: HOTEL_CONFIG.contact.primaryEmail,
       ...formData,
       submitted_at: new Date().toISOString()
     };
+
+    if (replyEmail) {
+      payload.replyto = replyEmail;
+    }
 
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
