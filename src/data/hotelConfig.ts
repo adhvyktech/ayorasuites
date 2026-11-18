@@ -146,9 +146,9 @@ export const HOTEL_CONFIG = {
       image: "/images/hotel/rooms/executive/executive-main.jpg",
       gallery: [
         "/images/hotel/rooms/executive/executive-main.jpg",
-        "/images/hotel/rooms/executive/executive-bed.jpg",
+        "/images/hotel/rooms/executive/executive-suite.jpg",
         "/images/hotel/rooms/executive/executive-desk.jpg",
-        "/images/hotel/rooms/executive/executive-seating.jpg",
+        "/images/hotel/rooms/executive/executive-bed.jpg",
         "/images/hotel/rooms/executive/executive-washroom.jpg"
       ],
       features: [
@@ -168,11 +168,11 @@ export const HOTEL_CONFIG = {
       image: "/images/hotel/rooms/suite/suite-main.jpg",
       gallery: [
         "/images/hotel/rooms/suite/suite-main.jpg",
-        "/images/hotel/rooms/suite/suite-living.jpg",
-        "/images/hotel/rooms/suite/suite-lounge.jpg",
-        "/images/hotel/rooms/suite/suite-bedroom.jpg",
         "/images/hotel/rooms/suite/suite-view.jpg",
-        "/images/hotel/rooms/suite/suite-washroom.jpg"
+        "/images/hotel/rooms/suite/suite-living.jpg",
+        "/images/hotel/rooms/suite/suite-foyer.jpg",
+        "/images/hotel/rooms/suite/suite-bedside.jpg",
+        "/images/hotel/rooms/suite/suite-amenities.jpg"
       ],
       features: [
         "Separate living lounge and private master suite",
@@ -264,9 +264,9 @@ export const HOTEL_CONFIG = {
     },
     {
       id: "g-4",
-      title: "Signature Suite Living & Lounge Area",
+      title: "Signature Suite Master Bedroom",
       category: "Rooms",
-      imageUrl: "/images/hotel/rooms/suite/suite-living.jpg"
+      imageUrl: "/images/hotel/rooms/suite/suite-main.jpg"
     },
     {
       id: "g-5",
