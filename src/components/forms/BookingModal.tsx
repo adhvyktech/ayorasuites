@@ -62,6 +62,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     }
   }, [isOpen, initialRoom, initialCheckIn, initialCheckOut, initialGuests]);
 
+  // ESC key and background body scroll lock
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const validate = () => {
@@ -150,30 +165,41 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-[#FAF7F2] w-full max-w-xl rounded-sm shadow-2xl border border-ayora-border overflow-hidden my-8 relative animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center bg-black/80 backdrop-blur-sm overflow-hidden p-0 sm:p-4 animate-fade-in"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div 
+        className="bg-[#FAF7F2] w-full sm:max-w-xl max-h-[92dvh] sm:max-h-[90vh] rounded-t-2xl sm:rounded-sm shadow-2xl border border-ayora-border overflow-hidden relative flex flex-col animate-slide-up sm:animate-fade-in"
+        onClick={(e) => e.stopPropagation()}
+      >
         
-        {/* Modal Header */}
-        <div className="bg-ayora-dark text-white px-6 py-5 flex items-center justify-between border-b border-ayora-border-dark">
-          <div>
-            <span className="text-[11px] uppercase tracking-luxury text-ayora-gold font-semibold">
+        {/* Modal Sticky Header - Pinned & Always Visible on Mobile */}
+        <div className="bg-ayora-dark text-white px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between border-b border-ayora-border-dark flex-shrink-0 sticky top-0 z-30 shadow-md">
+          <div className="pr-2">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-luxury text-ayora-gold font-semibold block">
               Boutique Reservations
             </span>
-            <h3 className="text-xl font-serif text-white mt-0.5">
+            <h3 className="text-base sm:text-lg font-serif text-white mt-0.5 truncate max-w-[220px] sm:max-w-none">
               Book Your Stay at Ayora Suites
             </h3>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded transition-colors"
-            aria-label="Close modal"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-all focus:outline-none min-h-[38px] flex-shrink-0 border border-white/15 hover:border-ayora-gold/60"
+            aria-label="Close booking modal"
+            title="Close modal"
           >
-            <X className="w-5 h-5" />
+            <span className="text-xs uppercase tracking-wider font-semibold text-ayora-gold sm:hidden">Close</span>
+            <X className="w-4 h-4 text-white" />
           </button>
         </div>
 
-        {/* Modal Content */}
-        <div className="p-6 sm:p-8">
+        {/* Modal Content - Scrollable Body */}
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8 overscroll-contain">
           {submittedState ? (
             <div className="space-y-6 text-center py-4">
               <div className="w-14 h-14 bg-ayora-gold/15 text-ayora-gold rounded-full flex items-center justify-center mx-auto">
@@ -228,13 +254,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-ayora-border">
+              <div className="pt-4 border-t border-ayora-border flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   type="button"
                   onClick={() => setSubmittedState(null)}
                   className="text-xs text-ayora-muted hover:text-ayora-charcoal"
                 >
                   &larr; Modify Enquiry Details
+                </button>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="w-full sm:w-auto px-6 py-2.5 bg-ayora-charcoal text-white hover:bg-black text-xs font-semibold tracking-wider uppercase rounded-sm"
+                >
+                  Close Window
                 </button>
               </div>
             </div>
@@ -403,20 +436,29 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               {/* Action Buttons */}
               <div className="pt-2 space-y-3">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <span>Submitting Enquiry...</span>
-                  ) : (
-                    <>
-                      <span>Submit Booking Enquiry</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-2.5">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full sm:flex-1 py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <span>Submitting Enquiry...</span>
+                    ) : (
+                      <>
+                        <span>Submit Booking Enquiry</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="w-full sm:w-auto px-5 py-3.5 border border-ayora-border bg-white text-ayora-charcoal hover:bg-ayora-beige/60 text-xs font-semibold tracking-wider uppercase rounded-sm transition-colors text-center"
+                  >
+                    Close
+                  </button>
+                </div>
 
                 <div className="flex items-center justify-center">
                   <a

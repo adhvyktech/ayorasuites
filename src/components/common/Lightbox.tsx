@@ -61,10 +61,11 @@ export const Lightbox: React.FC<LightboxProps> = ({
           </span>
           <button
             onClick={onClose}
-            className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors focus:outline-none"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors focus:outline-none min-h-[38px] border border-white/20"
             aria-label="Close Lightbox"
           >
-            <X className="w-6 h-6" />
+            <span className="text-xs uppercase tracking-wider font-semibold text-ayora-gold sm:hidden">Close</span>
+            <X className="w-5 h-5 text-white" />
           </button>
         </div>
       </div>
