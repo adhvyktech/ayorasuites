@@ -82,17 +82,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="flex items-center justify-between gap-4">
           
-          {/* Logo - Official Original Asset */}
+          {/* Logo - Official Original Asset (Transparent & Balanced) */}
           <Link 
             to="/" 
-            className="flex items-center group focus:outline-none flex-shrink-0" 
+            className="flex items-center group focus:outline-none flex-shrink-0 py-0.5" 
             aria-label="Ayora Suites Home"
           >
-            <div className="h-10 sm:h-12 md:h-13 flex items-center overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
+            <div className="h-12 sm:h-14 md:h-16 lg:h-[70px] flex items-center transition-transform duration-300 group-hover:scale-[1.02]">
               <img 
                 src={HOTEL_CONFIG.brand.logoUrl} 
                 alt="AYORA SUITES - Luxury Stays, Conference, Airport Road" 
-                className="h-full w-auto object-contain max-w-[160px] sm:max-w-[190px]"
+                className="h-full w-auto object-contain max-h-[70px]"
                 loading="eager"
               />
             </div>

@@ -13,15 +13,16 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Official Logo & Brand Positioning (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
-            {/* Logo in warm ivory luxury frame to honor authentic asset */}
-            <div className="inline-block bg-[#F8F4EC] p-3 sm:p-3.5 rounded-sm border border-ayora-gold/40 shadow-lg">
-              <img 
-                src={HOTEL_CONFIG.brand.logoUrl} 
-                alt="AYORA SUITES - Official Logo" 
-                className="h-12 sm:h-14 w-auto object-contain"
-                loading="lazy"
-              />
-            </div>
+            <Link to="/" className="inline-block group focus:outline-none" aria-label="Ayora Suites Home">
+              <div className="h-16 sm:h-20 flex items-center transition-transform duration-300 group-hover:scale-[1.02]">
+                <img 
+                  src="/images/ayora-logo-white.png" 
+                  alt="AYORA SUITES - Official Logo" 
+                  className="h-full w-auto object-contain max-h-[80px]"
+                  loading="lazy"
+                />
+              </div>
+            </Link>
             
             <p className="text-sm leading-relaxed text-[#A9A49A] max-w-sm">
               Discover a new standard of boutique hospitality on New International Airport Road, Bengaluru. 

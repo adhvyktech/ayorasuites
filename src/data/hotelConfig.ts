@@ -44,7 +44,8 @@ export const HOTEL_CONFIG = {
     welcomeDescription: "Experience a welcoming stay designed around comfort, convenience and attentive hospitality. Whether you are visiting Bengaluru for business, meetings or leisure, Ayora Suites offers a comfortable base near Bengaluru Airport.",
     footerTagline: "Your Comfort, Our Commitment.",
     copyrightYear: new Date().getFullYear(),
-    logoUrl: "/images/ayora-logo.jpg",
+    logoUrl: "/images/ayora-logo.png",
+    logoWhiteUrl: "/images/ayora-logo-white.png",
     website: "https://ayorasuites.com",
   },
 
