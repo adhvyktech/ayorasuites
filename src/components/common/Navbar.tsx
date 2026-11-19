@@ -32,6 +32,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     setIsHotelDropdownOpen(false);
   }, [location]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isMobileMenuOpen]);
+
+  // Escape key closes mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setIsHotelDropdownOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     setIsHotelDropdownOpen(true);
@@ -73,10 +96,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 ${isMobileMenuOpen ? 'z-50' : 'z-40'} transition-colors duration-200 ${
         isScrolled 
           ? 'bg-[#F8F4EC]/95 backdrop-blur-md shadow-md py-2 sm:py-2.5 border-b border-ayora-border/70' 
-          : 'bg-[#F8F4EC] py-2.5 sm:py-3.5 border-b border-ayora-border/50'
+          : 'bg-[#F8F4EC] py-2 sm:py-2.5 border-b border-ayora-border/50'
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
@@ -311,12 +334,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer / Overlay */}
+      {/* Mobile Drawer / Fullscreen Navigation Overlay */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[56px] sm:top-[68px] bottom-0 bg-ayora-ivory/98 backdrop-blur-lg border-t border-ayora-border overflow-y-auto z-50 px-6 py-6 flex flex-col justify-between">
-          <div className="space-y-4">
-            <div className="text-center pb-3 border-b border-ayora-border/60">
-              <span className="text-[11px] tracking-widest uppercase text-ayora-muted font-medium">
+        <div className="lg:hidden fixed inset-0 z-50 bg-[#F8F4EC] flex flex-col justify-between overflow-hidden animate-fade-in">
+          
+          {/* Mobile Drawer Top Bar - Pinned with Logo and Close Button */}
+          <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3 border-b border-ayora-border/80 bg-[#F8F4EC] flex-shrink-0 shadow-sm">
+            <Link 
+              to="/" 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="flex items-center focus:outline-none"
+              aria-label="Ayora Suites Home"
+            >
+              <img 
+                src={HOTEL_CONFIG.brand.logoUrl} 
+                alt="AYORA SUITES" 
+                className="h-10 sm:h-12 w-auto object-contain max-h-[50px]"
+              />
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-ayora-charcoal text-white hover:bg-black active:scale-95 transition-all focus:outline-none min-h-[38px] shadow-sm border border-ayora-gold/30"
+              aria-label="Close navigation menu"
+            >
+              <span className="text-xs uppercase tracking-wider font-semibold text-ayora-gold">Close</span>
+              <X className="w-4 h-4 text-white" />
+            </button>
+          </div>
+
+          {/* Scrollable Navigation Body */}
+          <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4 overscroll-contain">
+            <div className="text-center pb-2.5 border-b border-ayora-border/60">
+              <span className="text-[10px] sm:text-[11px] tracking-widest uppercase text-ayora-muted font-medium block">
                 {HOTEL_CONFIG.brand.tagline}
               </span>
             </div>
@@ -333,44 +384,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                 { name: 'Contact & Enquiries', path: '/contact', icon: Mail },
               ].map((link) => {
                 const LinkIcon = link.icon;
+                const linkIsActive = isActive(link.path);
                 return (
                   <Link
                     key={link.name}
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3 rounded text-xs tracking-wider uppercase transition-colors ${
-                      isActive(link.path)
-                        ? 'bg-ayora-beige text-ayora-gold font-bold'
+                    className={`flex items-center justify-between px-4 py-3 rounded text-xs tracking-wider uppercase transition-all ${
+                      linkIsActive
+                        ? 'bg-ayora-beige text-ayora-gold font-bold shadow-sm border border-ayora-gold/30'
                         : 'text-ayora-charcoal hover:bg-ayora-beige/60 hover:text-ayora-gold'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <LinkIcon className="w-4 h-4 text-ayora-gold/80" />
+                      <LinkIcon className={`w-4 h-4 ${linkIsActive ? 'text-ayora-gold' : 'text-ayora-gold/80'}`} />
                       <span>{link.name}</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-ayora-gold/60" />
+                    <ArrowRight className={`w-3.5 h-3.5 ${linkIsActive ? 'text-ayora-gold' : 'text-ayora-gold/60'}`} />
                   </Link>
                 );
               })}
             </nav>
           </div>
 
-          <div className="pt-5 border-t border-ayora-border space-y-3">
+          {/* Bottom Fixed Action Footer in Mobile Drawer */}
+          <div className="p-4 sm:p-5 border-t border-ayora-border bg-[#F8F4EC] space-y-2.5 flex-shrink-0 shadow-lg">
             <button
+              type="button"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep text-white text-xs font-semibold tracking-wider uppercase rounded-sm shadow-md flex items-center justify-center space-x-2"
+              className="w-full py-3.5 bg-ayora-gold hover:bg-ayora-gold-deep active:scale-95 text-white text-xs font-semibold tracking-luxury uppercase rounded-sm shadow-md flex items-center justify-center space-x-2 transition-all"
             >
               <Calendar className="w-4 h-4" />
               <span>Book Your Stay Now</span>
             </button>
 
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-2 gap-2">
               <a
                 href={`tel:${HOTEL_CONFIG.contact.primaryPhoneClean}`}
-                className="flex items-center justify-center py-2.5 px-3 border border-ayora-border bg-white text-ayora-charcoal text-xs font-medium rounded-sm hover:border-ayora-gold"
+                className="flex items-center justify-center py-2.5 px-3 border border-ayora-border bg-white text-ayora-charcoal text-xs font-semibold uppercase tracking-wider rounded-sm hover:border-ayora-gold shadow-sm"
               >
                 <Phone className="w-3.5 h-3.5 mr-1.5 text-ayora-gold" />
                 <span>Call Us</span>
@@ -379,12 +433,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
                 href={HOTEL_CONFIG.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center py-2.5 px-3 border border-[#25D366]/40 bg-white text-[#128C7E] text-xs font-medium rounded-sm hover:bg-[#25D366]/10"
+                className="flex items-center justify-center py-2.5 px-3 border border-[#25D366]/40 bg-white text-[#128C7E] text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-[#25D366]/10 shadow-sm"
               >
                 <span>WhatsApp</span>
               </a>
             </div>
           </div>
+
         </div>
       )}
     </header>

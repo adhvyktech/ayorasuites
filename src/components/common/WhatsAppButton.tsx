@@ -14,7 +14,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ customMessage })
   const whatsappUrl = `https://wa.me/${HOTEL_CONFIG.contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+    <div className="fixed bottom-6 right-6 z-30 flex flex-col items-end">
       {/* Contextual Popover Tooltip */}
       {showTooltip && (
         <div className="mb-3 max-w-xs bg-white text-ayora-charcoal text-xs p-3.5 rounded-lg shadow-luxury-lg border border-ayora-border relative animate-fade-in">

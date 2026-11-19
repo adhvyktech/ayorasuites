@@ -43,7 +43,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
   const currentImage = images[currentIndex];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between p-4 sm:p-6 select-none animate-fade-in">
+    <div className="fixed inset-0 z-[70] bg-black/95 flex flex-col justify-between p-4 sm:p-6 select-none animate-fade-in">
       {/* Top Bar */}
       <div className="flex items-center justify-between text-white/80 z-10">
         <div>

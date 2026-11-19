@@ -38,7 +38,7 @@ export const RoomDetailModal: React.FC<RoomDetailModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex flex-col justify-end sm:justify-center sm:items-center bg-black/80 backdrop-blur-sm overflow-hidden p-0 sm:p-4 animate-fade-in"
+      className="fixed inset-0 z-[60] flex flex-col justify-end sm:justify-center sm:items-center bg-black/80 backdrop-blur-sm overflow-hidden p-0 sm:p-4 animate-fade-in"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
