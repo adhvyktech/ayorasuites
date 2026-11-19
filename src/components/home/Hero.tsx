@@ -37,7 +37,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
             <Star className="w-3.5 h-3.5 fill-current" />
           </div>
           <span className="text-[10px] sm:text-xs font-semibold tracking-luxury-widest uppercase text-ayora-gold-light">
-            LUXURY STAYS | CONFERENCE | AIRPORT ROAD
+            {HOTEL_CONFIG.brand.tagline}
           </span>
         </div>
 

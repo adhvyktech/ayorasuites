@@ -36,7 +36,7 @@ export const HOTEL_CONFIG = {
   brand: {
     name: "AYORA SUITES",
     shortName: "Ayora",
-    tagline: "LUXURY STAYS | CONFERENCE | AIRPORT ROAD",
+    tagline: "Boutique Hotel · Bengaluru Airport Road",
     headline: "A stay beyond expectations.",
     subheadline: "Discover thoughtfully designed spaces, warm hospitality and effortless comfort at Ayora Suites, near Bengaluru Airport.",
     welcomeEyebrow: "WELCOME TO AYORA SUITES",
