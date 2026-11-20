@@ -21,7 +21,7 @@ export interface AmenityItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Property' | 'Rooms' | 'Interiors' | 'Meetings & Events' | 'Surroundings';
+  category: 'Rooms & Suites' | 'Property & Facade' | 'Lobby & Reception' | 'Dining' | 'Meetings & Events' | 'Property' | 'Rooms' | 'Interiors' | 'Surroundings';
   imageUrl: string;
   aspect?: string;
 }
@@ -246,76 +246,280 @@ export const HOTEL_CONFIG = {
 
   gallery: [
     {
-      id: "g-1",
-      title: "Ayora Suites Architectural Facade",
-      category: "Property",
+      id: "g-ext-1",
+      title: "Ayora Suites Architectural Facade & Portico",
+      category: "Property & Facade",
       imageUrl: "/images/hotel/exterior/exterior-front.jpg"
     },
     {
-      id: "g-2",
-      title: "Executive Conference & Boardroom",
+      id: "g-suite-1",
+      title: "Signature Suite Master King Bedroom",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-main.jpg"
+    },
+    {
+      id: "g-rec-1",
+      title: "Grand Reception Lobby & Foyer",
+      category: "Lobby & Reception",
+      imageUrl: "/images/hotel/reception/reception-lobby.jpg"
+    },
+    {
+      id: "g-din-1",
+      title: "Ayora Suites Restaurant & Dining Space",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-main.jpg"
+    },
+    {
+      id: "g-conf-1",
+      title: "Executive Conference & Banquet Hall",
       category: "Meetings & Events",
       imageUrl: "/images/hotel/conference/conference-main.jpg"
     },
     {
-      id: "g-3",
-      title: "Welcoming Reception Lobby & Foyer",
-      category: "Property",
-      imageUrl: "/images/hotel/reception/reception-lobby.jpg"
+      id: "g-exec-1",
+      title: "Executive King Room Sanctuary",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-main.jpg"
     },
     {
-      id: "g-4",
-      title: "Signature Suite Master Bedroom",
-      category: "Rooms",
-      imageUrl: "/images/hotel/rooms/suite/suite-main.jpg"
+      id: "g-ext-2",
+      title: "Evening Illumination & Architectural Night View",
+      category: "Property & Facade",
+      imageUrl: "/images/hotel/exterior/exterior-night.jpg"
     },
     {
-      id: "g-5",
-      title: "Boutique Reception Desk & Guest Welcome",
-      category: "Interiors",
+      id: "g-rec-2",
+      title: "Boutique Reception & Concierge Desk",
+      category: "Lobby & Reception",
       imageUrl: "/images/hotel/reception/reception-main.jpg"
     },
     {
-      id: "g-6",
-      title: "Corporate Meeting & Audio-Visual Hall",
+      id: "g-dlx-1",
+      title: "Deluxe King Room Atmosphere",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-main.jpg"
+    },
+    {
+      id: "g-din-2",
+      title: "Gourmet Breakfast & Buffet Counter",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-buffet.jpg"
+    },
+    {
+      id: "g-conf-2",
+      title: "Audio-Visual Seminar & Stage Setup",
       category: "Meetings & Events",
       imageUrl: "/images/hotel/conference/conference-presentation.jpg"
     },
     {
-      id: "g-7",
+      id: "g-twin-1",
       title: "Twin Sharing Room Accommodation",
-      category: "Rooms",
+      category: "Rooms & Suites",
       imageUrl: "/images/hotel/rooms/twin/twin-beds.jpg"
     },
     {
-      id: "g-8",
-      title: "Ayora Suites Dining & Restaurant",
-      category: "Interiors",
-      imageUrl: "/images/hotel/dining/dining-main.jpg"
-    },
-    {
-      id: "g-9",
-      title: "Evening Illumination & Architectural Night View",
-      category: "Property",
-      imageUrl: "/images/hotel/exterior/exterior-night.jpg"
-    },
-    {
-      id: "g-10",
-      title: "Executive King Room Sanctuary",
-      category: "Rooms",
-      imageUrl: "/images/hotel/rooms/executive/executive-main.jpg"
-    },
-    {
-      id: "g-11",
-      title: "Gourmet Buffet & Dining Counter",
-      category: "Interiors",
-      imageUrl: "/images/hotel/dining/dining-buffet.jpg"
-    },
-    {
-      id: "g-12",
-      title: "Airport Corridor Landmark Exterior",
-      category: "Surroundings",
+      id: "g-ext-3",
+      title: "Airport Corridor Architectural Landmark",
+      category: "Property & Facade",
       imageUrl: "/images/hotel/exterior/exterior-facade.jpg"
+    },
+    {
+      id: "g-suite-2",
+      title: "Signature Suite Private Living Lounge",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-living.jpg"
+    },
+    {
+      id: "g-rec-3",
+      title: "Executive Guest Welcome Lounge",
+      category: "Lobby & Reception",
+      imageUrl: "/images/hotel/reception/reception-lounge.jpg"
+    },
+    {
+      id: "g-din-3",
+      title: "Multi-Cuisine Dining Hall",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-restaurant.jpg"
+    },
+    {
+      id: "g-conf-3",
+      title: "Corporate Boardroom & Strategy Table",
+      category: "Meetings & Events",
+      imageUrl: "/images/hotel/conference/conference-boardroom.jpg"
+    },
+    {
+      id: "g-exec-2",
+      title: "Executive Room Spacious Perspective",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-suite.jpg"
+    },
+    {
+      id: "g-ext-4",
+      title: "Modern Facade & Corner Perspective",
+      category: "Property & Facade",
+      imageUrl: "/images/hotel/exterior/exterior-angle.jpg"
+    },
+    {
+      id: "g-rec-4",
+      title: "Concierge & Front Desk Service",
+      category: "Lobby & Reception",
+      imageUrl: "/images/hotel/reception/reception-desk.jpg"
+    },
+    {
+      id: "g-suite-3",
+      title: "Signature Suite Plush Sofa & Sitting Area",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-lounge.jpg"
+    },
+    {
+      id: "g-din-4",
+      title: "Intimate Restaurant Table Setting",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-tables.jpg"
+    },
+    {
+      id: "g-dlx-2",
+      title: "Deluxe King Bed & Luxury Headboard",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-bed.jpg"
+    },
+    {
+      id: "g-conf-4",
+      title: "Flexible Corporate Event Seating Layout",
+      category: "Meetings & Events",
+      imageUrl: "/images/hotel/conference/conference-layout.jpg"
+    },
+    {
+      id: "g-twin-2",
+      title: "Twin Sharing Room Overview",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/twin/twin-main.jpg"
+    },
+    {
+      id: "g-rec-5",
+      title: "Plush Waiting & Transit Lounge",
+      category: "Lobby & Reception",
+      imageUrl: "/images/hotel/reception/reception-seating.jpg"
+    },
+    {
+      id: "g-din-5",
+      title: "Warm Ambient Dining Lighting & Decor",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-ambience.jpg"
+    },
+    {
+      id: "g-exec-3",
+      title: "Executive Plush King Bedding",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-bed.jpg"
+    },
+    {
+      id: "g-ext-5",
+      title: "Ground Floor Welcome & Porte-Cochère",
+      category: "Property & Facade",
+      imageUrl: "/images/hotel/exterior/exterior-entrance.jpg"
+    },
+    {
+      id: "g-suite-4",
+      title: "Signature Suite Panoramic Living View",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-view.jpg"
+    },
+    {
+      id: "g-dlx-3",
+      title: "Deluxe Ergonomic Work Desk",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-workdesk.jpg"
+    },
+    {
+      id: "g-din-6",
+      title: "Window-Side Restaurant Seating",
+      category: "Dining",
+      imageUrl: "/images/hotel/dining/dining-view.jpg"
+    },
+    {
+      id: "g-rec-6",
+      title: "Interior Aesthetic & Design Accents",
+      category: "Lobby & Reception",
+      imageUrl: "/images/hotel/reception/reception-details.jpg"
+    },
+    {
+      id: "g-exec-4",
+      title: "Executive Velvet Armchair Corner",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-seating.jpg"
+    },
+    {
+      id: "g-twin-3",
+      title: "Twin Room Airy Room Layout",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/twin/twin-view.jpg"
+    },
+    {
+      id: "g-dlx-4",
+      title: "Deluxe Room Wide Angle Comfort",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-angle.jpg"
+    },
+    {
+      id: "g-suite-5",
+      title: "Signature Suite Bedside Decor & Warm Lighting",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-bedside.jpg"
+    },
+    {
+      id: "g-exec-5",
+      title: "Executive Business Workstation & Vanity",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-desk.jpg"
+    },
+    {
+      id: "g-twin-4",
+      title: "Twin Room Study & Utility Desk",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/twin/twin-desk.jpg"
+    },
+    {
+      id: "g-suite-6",
+      title: "Signature Suite Entry Vestibule",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-foyer.jpg"
+    },
+    {
+      id: "g-dlx-5",
+      title: "Deluxe Sanitized Ensuite Bathroom",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-washroom.jpg"
+    },
+    {
+      id: "g-exec-6",
+      title: "Executive Luxury Ensuite Washroom",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/executive/executive-washroom.jpg"
+    },
+    {
+      id: "g-twin-5",
+      title: "Twin Room Sparkling Clean Bathroom",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/twin/twin-washroom.jpg"
+    },
+    {
+      id: "g-suite-7",
+      title: "Signature Suite In-Room Tea & Coffee Station",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/suite/suite-amenities.jpg"
+    },
+    {
+      id: "g-dlx-6",
+      title: "Deluxe Room Thoughtful In-Room Amenities",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/deluxe/deluxe-amenities.jpg"
+    },
+    {
+      id: "g-twin-6",
+      title: "Twin Room Window & Lighting Perspective",
+      category: "Rooms & Suites",
+      imageUrl: "/images/hotel/rooms/twin/twin-angle.jpg"
     }
   ] as GalleryItem[],
 

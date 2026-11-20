@@ -9,6 +9,7 @@ interface LightboxProps {
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
+  onSelect?: (index: number) => void;
 }
 
 export const Lightbox: React.FC<LightboxProps> = ({
@@ -17,7 +18,8 @@ export const Lightbox: React.FC<LightboxProps> = ({
   isOpen,
   onClose,
   onNext,
-  onPrev
+  onPrev,
+  onSelect
 }) => {
   useEffect(() => {
     if (!isOpen) return;
@@ -95,24 +97,37 @@ export const Lightbox: React.FC<LightboxProps> = ({
         </button>
       </div>
 
-      {/* Bottom Thumbnail Strip / Indicator */}
-      <div className="flex items-center justify-center space-x-2 py-2 overflow-x-auto max-w-xl mx-auto">
+      {/* Bottom Thumbnail Strip */}
+      <div className="flex items-center space-x-2 py-2 overflow-x-auto max-w-4xl mx-auto px-4 scrollbar-thin">
         {images.map((img, idx) => (
           <button
             key={img.id}
             onClick={() => {
-              const diff = idx - currentIndex;
-              if (diff > 0) {
-                for (let i = 0; i < diff; i++) onNext();
-              } else if (diff < 0) {
-                for (let i = 0; i < Math.abs(diff); i++) onPrev();
+              if (onSelect) {
+                onSelect(idx);
+              } else {
+                const diff = idx - currentIndex;
+                if (diff > 0) {
+                  for (let i = 0; i < diff; i++) onNext();
+                } else if (diff < 0) {
+                  for (let i = 0; i < Math.abs(diff); i++) onPrev();
+                }
               }
             }}
-            className={`h-1.5 transition-all rounded-full ${
-              idx === currentIndex ? 'w-8 bg-ayora-gold' : 'w-2 bg-white/30 hover:bg-white/60'
+            className={`h-11 w-16 flex-shrink-0 rounded-sm overflow-hidden border transition-all ${
+              idx === currentIndex
+                ? 'border-ayora-gold scale-105 shadow-md opacity-100 ring-2 ring-ayora-gold/50'
+                : 'border-white/20 opacity-40 hover:opacity-80'
             }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
+            aria-label={`Jump to ${img.title}`}
+          >
+            <img 
+              src={img.imageUrl} 
+              alt={img.title} 
+              className="w-full h-full object-cover" 
+              loading="lazy"
+            />
+          </button>
         ))}
       </div>
     </div>

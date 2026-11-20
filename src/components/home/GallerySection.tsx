@@ -8,15 +8,40 @@ export const GallerySection: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const categories = ['All', 'Property', 'Rooms', 'Interiors', 'Meetings & Events', 'Surroundings'];
+  const categories = [
+    { label: 'All Photos', value: 'All' },
+    { label: 'Rooms & Suites', value: 'Rooms & Suites' },
+    { label: 'Property & Facade', value: 'Property & Facade' },
+    { label: 'Lobby & Reception', value: 'Lobby & Reception' },
+    { label: 'Dining & Restaurant', value: 'Dining' },
+    { label: 'Meetings & Events', value: 'Meetings & Events' }
+  ];
+
+  const categoryCounts: Record<string, number> = {
+    'All': HOTEL_CONFIG.gallery.length,
+    'Rooms & Suites': HOTEL_CONFIG.gallery.filter(i => i.category === 'Rooms & Suites').length,
+    'Property & Facade': HOTEL_CONFIG.gallery.filter(i => i.category === 'Property & Facade').length,
+    'Lobby & Reception': HOTEL_CONFIG.gallery.filter(i => i.category === 'Lobby & Reception').length,
+    'Dining': HOTEL_CONFIG.gallery.filter(i => i.category === 'Dining').length,
+    'Meetings & Events': HOTEL_CONFIG.gallery.filter(i => i.category === 'Meetings & Events').length
+  };
 
   const filteredImages = activeCategory === 'All'
     ? HOTEL_CONFIG.gallery
     : HOTEL_CONFIG.gallery.filter((item) => item.category === activeCategory);
 
+  const handleCategoryChange = (catValue: string) => {
+    setActiveCategory(catValue);
+    setCurrentImageIndex(0);
+  };
+
   const handleOpenLightbox = (index: number) => {
     setCurrentImageIndex(index);
     setLightboxOpen(true);
+  };
+
+  const handleSelect = (index: number) => {
+    setCurrentImageIndex(index);
   };
 
   const handleNext = () => {
@@ -36,7 +61,7 @@ export const GallerySection: React.FC = () => {
           <div className="inline-flex items-center space-x-2 justify-center mb-3">
             <span className="w-6 h-[1px] bg-ayora-gold" />
             <span className="text-xs font-semibold uppercase tracking-luxury text-ayora-gold">
-              Visual Narrative
+              Visual Narrative ({HOTEL_CONFIG.gallery.length} Photographs)
             </span>
             <span className="w-6 h-[1px] bg-ayora-gold" />
           </div>
@@ -44,25 +69,35 @@ export const GallerySection: React.FC = () => {
             Glimpses of Ayora Suites
           </h2>
           <p className="text-xs sm:text-sm text-ayora-muted mt-3 max-w-xl mx-auto font-light leading-relaxed">
-            Explore our thoughtfully composed spaces, serene rooms, and executive meeting venues tailored for luxury stays near the airport.
+            Explore authentic photographs of our boutique rooms, suites, restaurant, reception lounges, and conference venues near Bengaluru Airport.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center justify-center flex-wrap gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 text-xs font-medium uppercase tracking-wider rounded-sm transition-all duration-200 ${
-                activeCategory === cat
-                  ? 'bg-ayora-gold text-white shadow-sm'
-                  : 'bg-white text-ayora-charcoal hover:bg-ayora-beige border border-ayora-border'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-2.5 mb-10">
+          {categories.map((cat) => {
+            const isSelected = activeCategory === cat.value;
+            return (
+              <button
+                key={cat.value}
+                onClick={() => handleCategoryChange(cat.value)}
+                className={`inline-flex items-center px-3.5 sm:px-4 py-2 text-xs font-medium uppercase tracking-wider rounded-sm transition-all duration-200 ${
+                  isSelected
+                    ? 'bg-ayora-gold text-white shadow-md'
+                    : 'bg-white text-ayora-charcoal hover:bg-ayora-beige border border-ayora-border shadow-xs'
+                }`}
+              >
+                <span>{cat.label}</span>
+                <span className={`ml-2 text-[10px] px-1.5 py-0.5 rounded-full ${
+                  isSelected
+                    ? 'bg-white/25 text-white font-bold'
+                    : 'bg-ayora-beige text-ayora-muted'
+                }`}>
+                  {categoryCounts[cat.value]}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Asymmetrical / Masonry Grid */}
@@ -107,6 +142,7 @@ export const GallerySection: React.FC = () => {
         onClose={() => setLightboxOpen(false)}
         onNext={handleNext}
         onPrev={handlePrev}
+        onSelect={handleSelect}
       />
     </section>
   );
