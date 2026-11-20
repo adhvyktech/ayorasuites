@@ -58,7 +58,7 @@ export const HOTEL_CONFIG = {
     secondaryPhoneClean: "+919148703006",
     whatsappNumber: "919980028502",
     whatsappUrl: "https://wa.me/919980028502",
-    web3formsAccessKey: "57552c94-3a6b-422d-b971-0bce0cebb9f9",
+    web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "",
     address: {
       building: "Building No: 1997/1289/9/32",
       street: "New International Airport Road",
@@ -337,7 +337,7 @@ export const generateWhatsAppBookingLink = (params: {
 }) => {
   const { checkIn, checkOut, guests, roomCategory, name } = params;
   let text = "Hello Ayora Suites, ";
-  
+
   if (name) {
     text += `my name is ${name}. `;
   }
