@@ -13,7 +13,6 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
   onEnquireRoom
 }) => {
   const roomsSchema = {
-    "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Ayora Suites Room Categories",
     "itemListElement": HOTEL_CONFIG.rooms.map((room, idx) => ({
@@ -23,10 +22,28 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
         "@type": "HotelRoom",
         "name": room.name,
         "description": room.shortDescription,
-        "image": room.image,
+        "image": room.image.startsWith('http') ? room.image : `https://ayorasuites.com${room.image}`,
         "url": `https://ayorasuites.com/rooms/${room.slug}`
       }
     }))
+  };
+
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Rooms & Suites",
+        "item": "https://ayorasuites.com/rooms"
+      }
+    ]
   };
 
   return (
@@ -44,7 +61,7 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
           "business hotel suites Devanahalli"
         ]}
         canonicalPath="/rooms"
-        schema={roomsSchema}
+        schema={[roomsSchema, breadcrumbSchema]}
       />
       
       {/* Header */}

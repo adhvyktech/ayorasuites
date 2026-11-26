@@ -1,87 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
   <url>
     <loc>https://ayorasuites.com/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/exterior/exterior-facade.jpg</image:loc>
+      <image:title>Ayora Suites Architectural Facade &amp; Entrance</image:title>
+      <image:caption>Boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/suite/suite-main.jpg</image:loc>
+      <image:title>Signature Suite Master King Bedroom</image:title>
+      <image:caption>Luxury accommodation near Kempegowda International Airport (BLR)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/reception/reception-lobby.jpg</image:loc>
+      <image:title>Grand Reception Lobby &amp; Guest Welcome Lounge</image:title>
+      <image:caption>Ayora Suites 24/7 reception desk and concierge foyer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/dining/dining-main.jpg</image:loc>
+      <image:title>Ayora Suites Restaurant &amp; Dining Hall</image:title>
+      <image:caption>Multi-cuisine dining and gourmet breakfast service near airport</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/conference/conference-main.jpg</image:loc>
+      <image:title>Executive Conference &amp; Banquet Hall</image:title>
+      <image:caption>Corporate boardroom and meeting facilities on Airport Road Bangalore</image:caption>
+    </image:image>
   </url>
+
+  <!-- Rooms Overview -->
   <url>
     <loc>https://ayorasuites.com/rooms</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/deluxe/deluxe-main.jpg</image:loc>
+      <image:title>Deluxe King Room Atmosphere</image:title>
+      <image:caption>Comfortable and modern room near Bangalore Airport</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/executive/executive-main.jpg</image:loc>
+      <image:title>Executive King Room Sanctuary</image:title>
+      <image:caption>Spacious executive stay tailored for business travelers</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/twin/twin-beds.jpg</image:loc>
+      <image:title>Twin Sharing Room Accommodation</image:title>
+      <image:caption>Dual bed accommodation ideal for colleagues and travel partners</image:caption>
+    </image:image>
   </url>
+
+  <!-- Room Detail: Deluxe -->
   <url>
     <loc>https://ayorasuites.com/rooms/deluxe-room</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/deluxe/deluxe-main.jpg</image:loc>
+      <image:title>Deluxe Room Master View</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/deluxe/deluxe-bed.jpg</image:loc>
+      <image:title>Deluxe King Bed &amp; Premium Headboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/deluxe/deluxe-workdesk.jpg</image:loc>
+      <image:title>Deluxe Ergonomic Work Desk</image:title>
+    </image:image>
   </url>
+
+  <!-- Room Detail: Twin Sharing -->
   <url>
     <loc>https://ayorasuites.com/rooms/twin-sharing-room</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/twin/twin-main.jpg</image:loc>
+      <image:title>Twin Sharing Room Overview</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/twin/twin-beds.jpg</image:loc>
+      <image:title>Twin Independent Single Beds</image:title>
+    </image:image>
   </url>
+
+  <!-- Room Detail: Executive -->
   <url>
     <loc>https://ayorasuites.com/rooms/executive-room</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/executive/executive-main.jpg</image:loc>
+      <image:title>Executive Room Signature Perspective</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/executive/executive-suite.jpg</image:loc>
+      <image:title>Executive Room Spacious Interior</image:title>
+    </image:image>
   </url>
+
+  <!-- Room Detail: Suite -->
   <url>
     <loc>https://ayorasuites.com/rooms/suite-room</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/suite/suite-main.jpg</image:loc>
+      <image:title>Signature Suite Master Bedroom</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/suite/suite-living.jpg</image:loc>
+      <image:title>Signature Suite Private Living Lounge</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/rooms/suite/suite-lounge.jpg</image:loc>
+      <image:title>Signature Suite Plush Sitting Area</image:title>
+    </image:image>
   </url>
+
+  <!-- Meetings & Events -->
   <url>
     <loc>https://ayorasuites.com/meetings-events</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/conference/conference-main.jpg</image:loc>
+      <image:title>Ayora Suites Conference Hall Setup</image:title>
+      <image:caption>Corporate event and conference space near Bangalore Airport</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/conference/conference-boardroom.jpg</image:loc>
+      <image:title>Executive Boardroom &amp; Strategy Table</image:title>
+    </image:image>
   </url>
+
+  <!-- Amenities -->
   <url>
     <loc>https://ayorasuites.com/amenities</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/dining/dining-buffet.jpg</image:loc>
+      <image:title>Gourmet Breakfast Buffet &amp; Dining Service</image:title>
+    </image:image>
   </url>
+
+  <!-- Location -->
   <url>
     <loc>https://ayorasuites.com/location</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/exterior/exterior-front.jpg</image:loc>
+      <image:title>Ayora Suites Portico &amp; Entrance on Airport Road</image:title>
+      <image:caption>Near Decathlon Chikkajala, Bengaluru</image:caption>
+    </image:image>
   </url>
+
+  <!-- Gallery -->
   <url>
     <loc>https://ayorasuites.com/gallery</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/exterior/exterior-night.jpg</image:loc>
+      <image:title>Evening Architectural Illumination of Ayora Suites</image:title>
+    </image:image>
   </url>
+
+  <!-- About -->
   <url>
     <loc>https://ayorasuites.com/about</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/reception/reception-lounge.jpg</image:loc>
+      <image:title>Ayora Suites Hospitality Lounge</image:title>
+    </image:image>
   </url>
+
+  <!-- Contact -->
   <url>
     <loc>https://ayorasuites.com/contact</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://ayorasuites.com/images/hotel/reception/reception-main.jpg</image:loc>
+      <image:title>Front Desk &amp; Concierge Contact Point</image:title>
+    </image:image>
   </url>
+
+  <!-- Privacy Policy -->
   <url>
     <loc>https://ayorasuites.com/privacy-policy</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Terms & Conditions -->
   <url>
     <loc>https://ayorasuites.com/terms</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
 </urlset>

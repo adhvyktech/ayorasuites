@@ -8,7 +8,6 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
   const aboutSchema = {
-    "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Ayora Suites",
     "url": "https://ayorasuites.com/about",
@@ -27,6 +26,24 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
     }
   };
 
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://ayorasuites.com/about"
+      }
+    ]
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
       <SEO
@@ -40,7 +57,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
           "luxury boutique stay Bengaluru Airport Road"
         ]}
         canonicalPath="/about"
-        schema={aboutSchema}
+        schema={[aboutSchema, breadcrumbSchema]}
       />
       
       {/* Page Header */}

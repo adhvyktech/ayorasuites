@@ -8,6 +8,24 @@ interface GalleryPageProps {
 }
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenBooking }) => {
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Photo Gallery",
+        "item": "https://ayorasuites.com/gallery"
+      }
+    ]
+  };
+
   return (
     <div className="pt-20 bg-ayora-ivory">
       <SEO
@@ -21,6 +39,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenBooking }) => {
           "suites images airport road Bangalore"
         ]}
         canonicalPath="/gallery"
+        schema={breadcrumbSchema}
       />
       <GallerySection />
       <FinalCta onOpenBooking={onOpenBooking} />

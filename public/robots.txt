@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ayorasuites.com/sitemap.xml
+Host: https://ayorasuites.com

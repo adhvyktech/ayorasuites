@@ -8,6 +8,24 @@ interface AmenitiesPageProps {
 }
 
 export const AmenitiesPage: React.FC<AmenitiesPageProps> = ({ onOpenBooking }) => {
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Amenities & Services",
+        "item": "https://ayorasuites.com/amenities"
+      }
+    ]
+  };
+
   return (
     <div className="pt-20 bg-ayora-ivory">
       <SEO
@@ -21,6 +39,7 @@ export const AmenitiesPage: React.FC<AmenitiesPageProps> = ({ onOpenBooking }) =
           "24/7 front desk hotel BLR"
         ]}
         canonicalPath="/amenities"
+        schema={breadcrumbSchema}
       />
       <AmenitiesSection />
       <FinalCta onOpenBooking={onOpenBooking} />

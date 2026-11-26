@@ -6,7 +6,6 @@ import { SEO } from '../components/common/SEO';
 
 export const ContactPage: React.FC = () => {
   const contactSchema = {
-    "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Ayora Suites",
     "url": "https://ayorasuites.com/contact",
@@ -26,6 +25,24 @@ export const ContactPage: React.FC = () => {
     }
   };
 
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact Us",
+        "item": "https://ayorasuites.com/contact"
+      }
+    ]
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
       <SEO
@@ -40,7 +57,7 @@ export const ContactPage: React.FC = () => {
           "hotel reservations Chikkajala"
         ]}
         canonicalPath="/contact"
-        schema={contactSchema}
+        schema={[contactSchema, breadcrumbSchema]}
       />
       
       {/* Header */}

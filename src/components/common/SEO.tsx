@@ -16,7 +16,7 @@ export const SEO: React.FC<SEOProps> = ({
   keywords = [],
   canonicalPath = '/',
   ogType = 'website',
-  ogImage = '/images/ayora-logo.jpg',
+  ogImage = '/images/hotel/exterior/exterior-facade.jpg',
   schema
 }) => {
   useEffect(() => {
@@ -39,7 +39,7 @@ export const SEO: React.FC<SEOProps> = ({
       let link = document.querySelector(`link[rel="${rel}"]`);
       if (!link) {
         link = document.createElement('link');
-        link.setAttribute('rel', rel);
+        link.setAttribute(rel, rel);
         document.head.appendChild(link);
       }
       link.setAttribute('href', href);
@@ -55,22 +55,32 @@ export const SEO: React.FC<SEOProps> = ({
       setMeta('name', 'keywords', keywords.join(', '));
     }
     setLink('canonical', fullCanonicalUrl);
+    setMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    setMeta('name', 'googlebot', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
 
-    // 3. Open Graph Tags
+    // 3. Geographic / Local Search Tags (Bangalore Airport Corridor)
+    setMeta('name', 'geo.region', 'IN-KA');
+    setMeta('name', 'geo.placename', 'Bengaluru');
+    setMeta('name', 'geo.position', '13.1764;77.6322');
+    setMeta('name', 'ICBM', '13.1764, 77.6322');
+
+    // 4. Open Graph Tags
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', fullCanonicalUrl);
     setMeta('property', 'og:type', ogType === 'hotel' ? 'website' : ogType);
     setMeta('property', 'og:image', fullOgImage);
+    setMeta('property', 'og:image:secure_url', fullOgImage);
     setMeta('property', 'og:site_name', 'Ayora Suites');
+    setMeta('property', 'og:locale', 'en_IN');
 
-    // 4. Twitter Tags
+    // 5. Twitter Card Tags
     setMeta('property', 'twitter:card', 'summary_large_image');
     setMeta('property', 'twitter:title', title);
     setMeta('property', 'twitter:description', description);
     setMeta('property', 'twitter:image', fullOgImage);
 
-    // 5. Dynamic JSON-LD Structured Data
+    // 6. Dynamic JSON-LD Structured Data
     if (schema) {
       let script = document.getElementById('page-json-ld');
       if (!script) {
@@ -79,11 +89,18 @@ export const SEO: React.FC<SEOProps> = ({
         script.setAttribute('type', 'application/ld+json');
         document.head.appendChild(script);
       }
-      script.textContent = JSON.stringify(schema);
+      if (Array.isArray(schema)) {
+        script.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": schema
+        });
+      } else {
+        script.textContent = JSON.stringify(schema);
+      }
     }
 
     return () => {
-      // Optional cleanup of page specific schema if unmounting
+      // Cleanup of page-specific schema if unmounting
       const script = document.getElementById('page-json-ld');
       if (script) {
         script.remove();

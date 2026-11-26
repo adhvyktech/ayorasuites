@@ -8,7 +8,6 @@ interface MeetingsPageProps {
 
 export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }) => {
   const meetingSchema = {
-    "@context": "https://schema.org",
     "@type": "EventVenue",
     "name": "Ayora Suites Conference & Meeting Facilities",
     "description": "Executive corporate meeting spaces, boardroom seminars, and corporate group accommodation on New International Airport Road near Kempegowda International Airport.",
@@ -22,6 +21,24 @@ export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }
       "postalCode": "562157",
       "addressCountry": "IN"
     }
+  };
+
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Meetings & Events",
+        "item": "https://ayorasuites.com/meetings-events"
+      }
+    ]
   };
 
   return (
@@ -38,7 +55,7 @@ export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }
           "seminar venue Devanahalli"
         ]}
         canonicalPath="/meetings-events"
-        schema={meetingSchema}
+        schema={[meetingSchema, breadcrumbSchema]}
       />
       
       {/* Header */}

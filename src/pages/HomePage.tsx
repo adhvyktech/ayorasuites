@@ -7,6 +7,7 @@ import { MeetingsSection } from '../components/home/MeetingsSection';
 import { AmenitiesSection } from '../components/home/AmenitiesSection';
 import { GallerySection } from '../components/home/GallerySection';
 import { LocationSection } from '../components/home/LocationSection';
+import { FaqSection, FAQS } from '../components/home/FaqSection';
 import { TestimonialsSection } from '../components/home/TestimonialsSection';
 import { FinalCta } from '../components/home/FinalCta';
 import { SEO } from '../components/common/SEO';
@@ -31,16 +32,24 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenMeetingModal
 }) => {
   const homeSchema = {
-    "@context": "https://schema.org",
-    "@type": "Hotel",
+    "@type": ["Hotel", "LodgingBusiness"],
     "name": "Ayora Suites",
+    "alternateName": ["Ayora Suites Bangalore", "Ayora Suites Airport Road", "Ayora Suites Chikkajala"],
     "url": "https://ayorasuites.com",
-    "image": "https://ayorasuites.com/images/ayora-logo.png",
+    "image": [
+      "https://ayorasuites.com/images/hotel/exterior/exterior-facade.jpg",
+      "https://ayorasuites.com/images/hotel/rooms/suite/suite-main.jpg",
+      "https://ayorasuites.com/images/hotel/reception/reception-lobby.jpg",
+      "https://ayorasuites.com/images/hotel/dining/dining-main.jpg",
+      "https://ayorasuites.com/images/hotel/conference/conference-main.jpg"
+    ],
     "logo": "https://ayorasuites.com/images/ayora-logo.png",
-    "description": "Ayora Suites is a premium boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru. Offering luxury stays, executive conference venues, and effortless BLR airport connectivity.",
+    "description": "Ayora Suites is a premium boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru. Offering luxury stays, executive conference venues, and effortless 15-min BLR airport connectivity.",
     "telephone": "+919980028502",
     "email": "ayorasuites@gmail.com",
-    "priceRange": "$$",
+    "priceRange": "₹₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Cash, Credit Card, Debit Card, UPI, Net Banking",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Building No: 1997/1289/9/32, New International Airport Road, Near Decathlon, Chikkajala, Kadigenahalli Gate",
@@ -54,6 +63,18 @@ export const HomePage: React.FC<HomePageProps> = ({
       "latitude": 13.1764,
       "longitude": 77.6322
     },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Building+No+1997%2F1289%2F9%2F32+New+International+Airport+Road+Near+Decathlon+Chikkajala+Kadigenahalli+Gate+Bengaluru+562157",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "starRating": {
+      "@type": "Rating",
+      "ratingValue": "4.8",
+      "bestRating": "5"
+    },
     "checkinTime": "12:00",
     "checkoutTime": "11:00",
     "amenityFeature": [
@@ -61,15 +82,29 @@ export const HomePage: React.FC<HomePageProps> = ({
       { "@type": "LocationFeatureSpecification", "name": "Secure Parking", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Conference & Meeting Rooms", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "24/7 Front Desk", "value": true }
+      { "@type": "LocationFeatureSpecification", "name": "24/7 Front Desk", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "In-Room Dining", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Airport Transit Assistance", "value": true }
     ]
+  };
+
+  const faqSchema = {
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
   };
 
   return (
     <div className="relative">
       <SEO
-        title="Ayora Suites | Boutique Hotel Near Bengaluru Airport | Luxury Stays & Conference"
-        description="Ayora Suites is a premium boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru. Offering luxury stays, executive conference venues, and effortless BLR airport connectivity."
+        title="Ayora Suites | Boutique Hotel Near Bengaluru Airport (BLR) | Airport Road"
+        description="Ayora Suites is a premium boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru. Featuring luxury suites, executive conference hall, and seamless 15-min airport connectivity."
         keywords={[
           "Ayora Suites",
           "hotels near Bengaluru Airport",
@@ -81,11 +116,12 @@ export const HomePage: React.FC<HomePageProps> = ({
           "hotels near Kadigenahalli Gate",
           "conference hotel Bangalore airport road",
           "business hotel North Bengaluru",
-          "hotel near KIADB Aerospace Park"
+          "hotel near KIADB Aerospace Park",
+          "day stay hotel Bangalore airport"
         ]}
         canonicalPath="/"
         ogType="website"
-        schema={homeSchema}
+        schema={[homeSchema, faqSchema]}
       />
 
       {/* 1. Hero */}
@@ -115,10 +151,13 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 8. Location */}
       <LocationSection />
 
-      {/* 9. Testimonials (Google Reviews Placeholder) */}
+      {/* 9. Helpful FAQs (Search Engine Rich Snippet) */}
+      <FaqSection />
+
+      {/* 10. Testimonials (Google Reviews Placeholder) */}
       <TestimonialsSection />
 
-      {/* 10. Final CTA */}
+      {/* 11. Final CTA */}
       <FinalCta onOpenBooking={() => onOpenBooking()} />
     </div>
   );

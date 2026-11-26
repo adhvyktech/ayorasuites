@@ -15,11 +15,10 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
   const [selectedImage, setSelectedImage] = useState<string>(room.image);
 
   const roomSchema = {
-    "@context": "https://schema.org",
     "@type": "HotelRoom",
     "name": `${room.name} – Ayora Suites`,
     "description": room.fullDescription,
-    "image": room.image,
+    "image": room.image.startsWith('http') ? room.image : `https://ayorasuites.com${room.image}`,
     "url": `https://ayorasuites.com/rooms/${room.slug}`,
     "amenityFeature": room.features.map((f) => ({
       "@type": "LocationFeatureSpecification",
@@ -40,6 +39,30 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
     }
   };
 
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Rooms & Suites",
+        "item": "https://ayorasuites.com/rooms"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": room.name,
+        "item": `https://ayorasuites.com/rooms/${room.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="pt-24 sm:pt-28 pb-20 bg-ayora-ivory">
       <SEO
@@ -55,7 +78,7 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
         ]}
         canonicalPath={`/rooms/${room.slug}`}
         ogImage={room.image}
-        schema={roomSchema}
+        schema={[roomSchema, breadcrumbSchema]}
       />
       
       {/* Back button & Breadcrumb */}

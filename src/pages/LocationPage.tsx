@@ -9,7 +9,6 @@ interface LocationPageProps {
 
 export const LocationPage: React.FC<LocationPageProps> = ({ onOpenBooking }) => {
   const locationSchema = {
-    "@context": "https://schema.org",
     "@type": "Place",
     "name": "Ayora Suites Location",
     "address": {
@@ -28,6 +27,24 @@ export const LocationPage: React.FC<LocationPageProps> = ({ onOpenBooking }) => 
     "hasMap": "https://www.google.com/maps/search/?api=1&query=Building+No+1997%2F1289%2F9%2F32+New+International+Airport+Road+Near+Decathlon+Chikkajala+Kadigenahalli+Gate+Bengaluru+562157"
   };
 
+  const breadcrumbSchema = {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ayorasuites.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Location & Directions",
+        "item": "https://ayorasuites.com/location"
+      }
+    ]
+  };
+
   return (
     <div className="pt-20 bg-ayora-ivory">
       <SEO
@@ -42,7 +59,7 @@ export const LocationPage: React.FC<LocationPageProps> = ({ onOpenBooking }) => 
           "hotels on New International Airport Road Bangalore"
         ]}
         canonicalPath="/location"
-        schema={locationSchema}
+        schema={[locationSchema, breadcrumbSchema]}
       />
       <LocationSection />
       <FinalCta onOpenBooking={onOpenBooking} />
