@@ -10,7 +10,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
   const aboutSchema = {
     "@type": "AboutPage",
     "name": "About Ayora Suites",
-    "url": "https://ayorasuites.com/about",
+    "url": "https://www.ayorasuites.com/about",
     "description": "Discover the boutique hospitality philosophy of Ayora Suites, offering serene, comfortable accommodation near Kempegowda International Airport Road in Bengaluru.",
     "mainEntity": {
       "@type": "Hotel",
@@ -33,13 +33,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking }) => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "About Us",
-        "item": "https://ayorasuites.com/about"
+        "item": "https://www.ayorasuites.com/about"
       }
     ]
   };

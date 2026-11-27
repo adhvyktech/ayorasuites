@@ -34,13 +34,13 @@ export const LocationPage: React.FC<LocationPageProps> = ({ onOpenBooking }) => 
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Location & Directions",
-        "item": "https://ayorasuites.com/location"
+        "item": "https://www.ayorasuites.com/location"
       }
     ]
   };

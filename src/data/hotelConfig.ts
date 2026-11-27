@@ -46,7 +46,7 @@ export const HOTEL_CONFIG = {
     copyrightYear: new Date().getFullYear(),
     logoUrl: "/images/ayora-logo.png",
     logoWhiteUrl: "/images/ayora-logo-white.png",
-    website: "https://ayorasuites.com",
+    website: "https://www.ayorasuites.com",
   },
 
   contact: {

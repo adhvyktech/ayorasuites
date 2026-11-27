@@ -18,8 +18,8 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
     "@type": "HotelRoom",
     "name": `${room.name} – Ayora Suites`,
     "description": room.fullDescription,
-    "image": room.image.startsWith('http') ? room.image : `https://ayorasuites.com${room.image}`,
-    "url": `https://ayorasuites.com/rooms/${room.slug}`,
+    "image": room.image.startsWith('http') ? room.image : `https://www.ayorasuites.com${room.image}`,
+    "url": `https://www.ayorasuites.com/rooms/${room.slug}`,
     "amenityFeature": room.features.map((f) => ({
       "@type": "LocationFeatureSpecification",
       "name": f,
@@ -46,19 +46,19 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({ onOpenBooking })
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Rooms & Suites",
-        "item": "https://ayorasuites.com/rooms"
+        "item": "https://www.ayorasuites.com/rooms"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": room.name,
-        "item": `https://ayorasuites.com/rooms/${room.slug}`
+        "item": `https://www.ayorasuites.com/rooms/${room.slug}`
       }
     ]
   };

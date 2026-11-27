@@ -35,15 +35,15 @@ export const HomePage: React.FC<HomePageProps> = ({
     "@type": ["Hotel", "LodgingBusiness"],
     "name": "Ayora Suites",
     "alternateName": ["Ayora Suites Bangalore", "Ayora Suites Airport Road", "Ayora Suites Chikkajala"],
-    "url": "https://ayorasuites.com",
+    "url": "https://www.ayorasuites.com",
     "image": [
-      "https://ayorasuites.com/images/hotel/exterior/exterior-facade.jpg",
-      "https://ayorasuites.com/images/hotel/rooms/suite/suite-main.jpg",
-      "https://ayorasuites.com/images/hotel/reception/reception-lobby.jpg",
-      "https://ayorasuites.com/images/hotel/dining/dining-main.jpg",
-      "https://ayorasuites.com/images/hotel/conference/conference-main.jpg"
+      "https://www.ayorasuites.com/images/hotel/exterior/exterior-facade.jpg",
+      "https://www.ayorasuites.com/images/hotel/rooms/suite/suite-main.jpg",
+      "https://www.ayorasuites.com/images/hotel/reception/reception-lobby.jpg",
+      "https://www.ayorasuites.com/images/hotel/dining/dining-main.jpg",
+      "https://www.ayorasuites.com/images/hotel/conference/conference-main.jpg"
     ],
-    "logo": "https://ayorasuites.com/images/ayora-logo.png",
+    "logo": "https://www.ayorasuites.com/images/ayora-logo.png",
     "description": "Ayora Suites is a premium boutique hotel on New International Airport Road near Decathlon Chikkajala, Bengaluru. Offering luxury stays, executive conference venues, and effortless 15-min BLR airport connectivity.",
     "telephone": "+919980028502",
     "email": "ayorasuites@gmail.com",

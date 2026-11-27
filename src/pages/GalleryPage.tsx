@@ -15,13 +15,13 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenBooking }) => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Photo Gallery",
-        "item": "https://ayorasuites.com/gallery"
+        "item": "https://www.ayorasuites.com/gallery"
       }
     ]
   };

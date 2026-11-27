@@ -22,8 +22,8 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
         "@type": "HotelRoom",
         "name": room.name,
         "description": room.shortDescription,
-        "image": room.image.startsWith('http') ? room.image : `https://ayorasuites.com${room.image}`,
-        "url": `https://ayorasuites.com/rooms/${room.slug}`
+        "image": room.image.startsWith('http') ? room.image : `https://www.ayorasuites.com${room.image}`,
+        "url": `https://www.ayorasuites.com/rooms/${room.slug}`
       }
     }))
   };
@@ -35,13 +35,13 @@ export const RoomsPage: React.FC<RoomsPageProps> = ({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Rooms & Suites",
-        "item": "https://ayorasuites.com/rooms"
+        "item": "https://www.ayorasuites.com/rooms"
       }
     ]
   };

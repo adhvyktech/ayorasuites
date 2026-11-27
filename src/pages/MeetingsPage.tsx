@@ -11,7 +11,7 @@ export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }
     "@type": "EventVenue",
     "name": "Ayora Suites Conference & Meeting Facilities",
     "description": "Executive corporate meeting spaces, boardroom seminars, and corporate group accommodation on New International Airport Road near Kempegowda International Airport.",
-    "url": "https://ayorasuites.com/meetings-events",
+    "url": "https://www.ayorasuites.com/meetings-events",
     "telephone": "+919980028502",
     "address": {
       "@type": "PostalAddress",
@@ -30,13 +30,13 @@ export const MeetingsPage: React.FC<MeetingsPageProps> = ({ onOpenMeetingModal }
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Meetings & Events",
-        "item": "https://ayorasuites.com/meetings-events"
+        "item": "https://www.ayorasuites.com/meetings-events"
       }
     ]
   };

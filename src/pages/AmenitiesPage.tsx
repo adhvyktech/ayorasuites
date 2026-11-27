@@ -15,13 +15,13 @@ export const AmenitiesPage: React.FC<AmenitiesPageProps> = ({ onOpenBooking }) =
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Amenities & Services",
-        "item": "https://ayorasuites.com/amenities"
+        "item": "https://www.ayorasuites.com/amenities"
       }
     ]
   };

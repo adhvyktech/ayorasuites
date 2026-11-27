@@ -8,7 +8,7 @@ export const ContactPage: React.FC = () => {
   const contactSchema = {
     "@type": "ContactPage",
     "name": "Contact Ayora Suites",
-    "url": "https://ayorasuites.com/contact",
+    "url": "https://www.ayorasuites.com/contact",
     "mainEntity": {
       "@type": "Hotel",
       "name": "Ayora Suites",
@@ -32,13 +32,13 @@ export const ContactPage: React.FC = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://ayorasuites.com/"
+        "item": "https://www.ayorasuites.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Contact Us",
-        "item": "https://ayorasuites.com/contact"
+        "item": "https://www.ayorasuites.com/contact"
       }
     ]
   };

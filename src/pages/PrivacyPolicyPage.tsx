@@ -31,7 +31,7 @@ export const PrivacyPolicyPage: React.FC = () => {
           <section className="space-y-2">
             <h2 className="font-serif text-lg text-ayora-charcoal font-medium">1. Introduction</h2>
             <p className="text-ayora-muted">
-              At <strong>Ayora Suites</strong>, we are committed to respecting and protecting the privacy of our guests, website visitors, and corporate clients. This Privacy Policy outlines the types of information we collect, how it is used, and how it is secured when you visit <strong>https://ayorasuites.com</strong> or interact with our reservation services.
+              At <strong>Ayora Suites</strong>, we are committed to respecting and protecting the privacy of our guests, website visitors, and corporate clients. This Privacy Policy outlines the types of information we collect, how it is used, and how it is secured when you visit <strong>https://www.ayorasuites.com</strong> or interact with our reservation services.
             </p>
           </section>
 

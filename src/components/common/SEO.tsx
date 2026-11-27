@@ -45,7 +45,7 @@ export const SEO: React.FC<SEOProps> = ({
       link.setAttribute('href', href);
     };
 
-    const siteUrl = 'https://ayorasuites.com';
+    const siteUrl = 'https://www.ayorasuites.com';
     const fullCanonicalUrl = `${siteUrl}${canonicalPath === '/' ? '' : canonicalPath}`;
     const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
